@@ -1,0 +1,13 @@
+{
+  "name": "lsk-user",
+  "version": "0.1.0",
+  "author": "isuvorov",
+  "license": "MIT",
+  "scripts": {
+    "release": "npm publish"
+  },
+  "dependencies": {
+  },
+  "peerDependencies": {
+  }
+}

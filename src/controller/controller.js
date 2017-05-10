@@ -40,12 +40,19 @@ export default (ctx) => {
     return { count };
   };
 
+  controller.me = async (req) => {
+    const user = await User.findOne({ _id: req.user._id });
+    if (!user) throw e404('User not found!');
+    return user;
+  };
+
   controller.get = async (req) => {
     const criteria = req.allParams();
     const user = await User.findOne(criteria);
     if (!user) throw e404('User not found!');
     return user;
   };
+
 
   controller.edit = async (req) => {
     // try {

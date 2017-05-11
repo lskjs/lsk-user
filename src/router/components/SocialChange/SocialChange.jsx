@@ -3,10 +3,11 @@ import {
   Card,
   CardBlock,
   CardHeader,
-} from 'react-bootstrap';
+} from 'react-bootstrap-card';
 import css from 'importcss';
 import { observer, inject } from 'mobx-react';
 import { autobind } from 'core-decorators';
+import _ from 'lodash';
 
 // import socials from '~/modules/auth/socials';
 import SocialButton from '../SocialButton';
@@ -46,8 +47,9 @@ export default class SocialChange extends PureComponent {
   render() {
     const socials = this.props.uapp.modules.auth.socials;
     const { config, passports } = this.props;
-    const connected = passports.list.map(i => i.provider);
-    const available = config.auth.socials.filter(i => !connected.includes(i));
+    const connected = ((passports || {}).list || []).map(i => i.provider);
+    const available = _.get(config, 'auth.socials', []).filter(i => !connected.includes(i));
+    if (!connected.length && !available.length) return null;
     return (
       <Card>
         <CardHeader>

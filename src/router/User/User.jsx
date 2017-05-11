@@ -19,14 +19,15 @@ import Avatar from 'lsk-general/General/Avatar';
 @inject(stores => ({
   myUser: stores.user,
   profile: stores.config.auth.profile,
-  Messages: stores.uapp.modules.chat.components.Messages,
+  uapp: stores.uapp,
+  // Messages: stores.uapp.modules.chat.components.Messages,
 }))
 @css(require('./User.css'))
 export default class User extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,
     myUser: PropTypes.object.isRequired,
-    Messages: PropTypes.node.isRequired,
+    // Messages: PropTypes.node.isRequired,
     profile: PropTypes.object.isRequired,
   };
   getFields(obj, user) {
@@ -38,7 +39,12 @@ export default class User extends Component {
       }));
   }
   render() {
-    const { profile, user, myUser, Messages } = this.props;
+    const { profile, user, myUser } = this.props;
+
+    let Messages;
+    if (this.props.uapp.modules.chat) {
+      Messages = this.props.uapp.modules.chat.components.Messages;
+    }
     return (
       <Row>
         <Col xs={12} styleName="center">
@@ -56,7 +62,7 @@ export default class User extends Component {
             </Link>
           </If>
         </Col>
-        <Col md={6} xs={12}>
+        <Col md={6} xs={12} mdOffset={Messages ? 0 : 3}>
           <Card style={{ margin: '10px 0' }}>
             <CardHeader>
               Информация о пользователе
@@ -71,16 +77,18 @@ export default class User extends Component {
             </CardBlock>
           </Card>
         </Col>
-        <Col md={6} xs={12}>
-          <Card style={{ margin: '10px 0' }}>
-            <CardHeader>
-              Комментарии
-            </CardHeader>
-            <CardBlock>
-              <Messages subjectType="User" subjectId={user._id} />
-            </CardBlock>
-          </Card>
-        </Col>
+        <If condition={Messages}>
+          <Col md={6} xs={12}>
+            <Card style={{ margin: '10px 0' }}>
+              <CardHeader>
+                Комментарии
+              </CardHeader>
+              <CardBlock>
+                <Messages subjectType="User" subjectId={user._id} />
+              </CardBlock>
+            </Card>
+          </Col>
+        </If>
       </Row>
     );
   }

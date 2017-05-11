@@ -4,10 +4,6 @@ import { inject } from 'mobx-react';
 import cx from 'classnames';
 import isEqual from 'lodash/isEqual';
 import {
-  Card,
-  CardBlock,
-  CardHeader,
-  CardFooter,
   Form,
   FormGroup,
   ControlLabel,
@@ -15,6 +11,12 @@ import {
   HelpBlock,
   Button,
 } from 'react-bootstrap';
+import {
+  Card,
+  CardBlock,
+  CardHeader,
+  CardFooter,
+} from 'react-bootstrap-card';
 
 import Component from 'lsk-general/General/Component';
 
@@ -108,7 +110,7 @@ export default class PasswordChange extends Component {
             </FormGroup>
           </CardBlock>
           <CardFooter
-            style={{textAlign:'center'}}
+            style={{ textAlign: 'center' }}
           >
             <Button
               type="submit"

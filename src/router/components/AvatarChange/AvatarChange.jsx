@@ -6,14 +6,16 @@ import Dropzone from 'react-dropzone';
 import { inject, observer } from 'mobx-react';
 import css from 'importcss';
 import {
-  Card,
-  CardBlock,
-  CardHeader,
-  CardFooter,
   Row,
   Col,
   Button,
 } from 'react-bootstrap';
+import {
+  Card,
+  CardBlock,
+  CardHeader,
+  CardFooter,
+} from 'react-bootstrap-card';
 
 @inject(s => ({
   user: s.user,

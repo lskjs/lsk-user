@@ -17,7 +17,6 @@ function fullName(user) {
 
 
 export default (ctx) => {
-  const { User, Passport } = ctx.models;
   const { e404 } = ctx.errors;
   const { checkNotFound } = ctx.helpers;
   const controller = {};
@@ -36,18 +35,24 @@ export default (ctx) => {
   };
 
   controller.length = async () => {
+    const { User } = ctx.models;
+
     const count = await User.count({});
     return { count };
   };
 
   controller.me = async (req) => {
+    const { User } = ctx.models;
+
     const user = await User.findOne({ _id: req.user._id });
     if (!user) throw e404('User not found!');
     return user;
   };
 
   controller.get = async (req) => {
+    const { User } = ctx.models;
     const criteria = req.allParams();
+
     const user = await User.findOne(criteria);
     if (!user) throw e404('User not found!');
     return user;
@@ -55,10 +60,12 @@ export default (ctx) => {
 
 
   controller.edit = async (req) => {
+    const { User } = ctx.models;
     // try {
     const userId = req.user._id;
     if (!userId) throw e404('userId not found!');
     const params = req.allParams();
+
     const user = await User.findById(userId);
     if (!user) throw e404('User not found!');
     // ctx.log.info('params', params);

@@ -1,19 +1,18 @@
 import _ from 'lodash';
 
-const sample = {
-  avatar: '/assets/no-avatar.png',
-  fullName: 'Счастливый Пользователь',
-};
-
-function fullName(user) {
-  let fullname;
-  if (user.profile.middleName) {
-    fullname = [user.profile.lastName, user.profile.firstName, user.profile.middleName];
-  } else {
-    fullname = [user.profile.firstName, user.profile.lastName];
-  }
-  return fullname.filter(a => a).join(' ') || sample.fullName;
-}
+// const sample = {
+//   avatar: '/assets/no-avatar.png',
+//   fullName: 'Счастливый Пользователь',
+// };
+// function fullName(user) {
+//   let fullname;
+//   if (user.profile.middleName) {
+//     fullname = [user.profile.lastName, user.profile.firstName, user.profile.middleName];
+//   } else {
+//     fullname = [user.profile.firstName, user.profile.lastName];
+//   }
+//   return fullname.filter(a => a).join(' ') || sample.fullName;
+// }
 
 
 export default (ctx) => {
@@ -22,6 +21,7 @@ export default (ctx) => {
   const controller = {};
 
   controller.list = async (req) => {
+    // return User.findByParams(req.data)
     const params = req.allParams();
     const { query } = params;
     let { limit = undefined, offset = 0 } = params;
@@ -74,7 +74,7 @@ export default (ctx) => {
     if (params.username) user.username = params.username;
     if (params.password) user.password = params.password;
     user.profile = _.merge({}, user.profile, params.profile);
-    user.name = fullName(user);
+    // user.name = fullName(user);
 
     return user.save();
     // } catch (error) {

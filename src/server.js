@@ -2,7 +2,7 @@
 export default ctx => (
   {
     async init() {
-      // this.models = require('./models').default(ctx, this);
+      this.models = require('./models').default(ctx, this);
       this.controller = require('./controller').default(ctx, this);
     },
 

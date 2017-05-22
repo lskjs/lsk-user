@@ -21,6 +21,7 @@ export default (ctx) => {
   const controller = {};
 
   controller.list = async (req) => {
+    const { User } = ctx.models;
     // return User.findByParams(req.data)
     const params = req.allParams();
     const { query } = params;

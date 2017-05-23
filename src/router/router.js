@@ -17,7 +17,7 @@ export default {
     {
       path: '/user/:id',
       async action({ page, uapp }, { id }) {
-        const user = await uapp.models.User.getById(id);
+        const user = await uapp.stores.User.getById(id);
         // const { Messages } = uapp.modules.chat.components;
         return page
           .meta({

@@ -13,7 +13,16 @@ export default (ctx) => {
 
     async list(req) {
       const { User } = ctx.models;
-      return User.findByParams(req.data);
+      const online = req.data.filter && req.data.filter.online || null;
+      if (online != null) {
+        delete req.data.filter.online;
+      }
+
+      const users = await User.findByParams(req.data);
+      if (online != null) {
+        return users.filter(user => user.online == online);
+      }
+      return users
     },
 
     //  async length () {
@@ -64,9 +73,6 @@ export default (ctx) => {
       user.profile = _.merge({}, user.profile, params.profile);
       return user.save();
     },
-
-    create: undefined,
-    remove: undefined,
   };
 
   return resourse;

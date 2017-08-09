@@ -33,13 +33,6 @@ export default class AvatarChange extends Component {
     files: null,
   }
 
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     files: null,
-  //   };
-  // }
-
   @autobind
   onDrop(files) {
     this.setState({ files });
@@ -50,10 +43,7 @@ export default class AvatarChange extends Component {
     const { files } = this.state;
     const { upload, user } = this.props;
     if (!upload) return false;
-    const data = new FormData();
-    data.append('file', files[0]);
-    const avatar = await upload.uploadImage(data);
-    // console.log(avatar);
+    const avatar = await upload.uploadFile(files[0]);
     await user.editUser({
       profile: {
         avatar: avatar.path,
@@ -91,6 +81,7 @@ export default class AvatarChange extends Component {
                 <If condition={files && files.length}>
                   {files.map((file, index) => (
                     <Avatar
+                      size={200}
                       key={index}
                       src={file.preview}
                       title={user.fullName}

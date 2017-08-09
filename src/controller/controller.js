@@ -70,7 +70,8 @@ export default (ctx) => {
       if (!user) throw e404('User not found!');
       if (params.username) user.username = params.username;
       if (params.password) user.password = params.password;
-      user.profile = _.merge({}, user.profile, params.profile);
+      _.merge(user.profile, params.profile);
+      user.markModified('profile');
       return user.save();
     },
   };

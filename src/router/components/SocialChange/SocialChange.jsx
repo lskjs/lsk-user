@@ -1,4 +1,5 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import {
   Card,
   CardBlock,
@@ -6,8 +7,8 @@ import {
 } from 'react-bootstrap-card';
 import css from 'importcss';
 import { observer, inject } from 'mobx-react';
-import { autobind } from 'core-decorators';
-import _ from 'lodash';
+import autobind from 'core-decorators/lib/autobind';
+import get from 'lodash/get';
 
 // import socials from '~/modules/auth/socials';
 import SocialButton from '../SocialButton';
@@ -48,7 +49,7 @@ export default class SocialChange extends PureComponent {
     const socials = this.props.uapp.modules.auth.socials;
     const { config, passports } = this.props;
     const connected = ((passports || {}).list || []).map(i => i.provider);
-    const available = _.get(config, 'auth.socials', []).filter(i => !connected.includes(i));
+    const available = get(config, 'auth.socials', []).filter(i => !connected.includes(i));
     if (!connected.length && !available.length) return null;
     return (
       <Card>

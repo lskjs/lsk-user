@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { inject } from 'mobx-react';
 import omit from 'lodash/omit';
 import {
@@ -13,8 +14,8 @@ import {
 } from 'react-bootstrap-card';
 import css from 'importcss';
 import Edit from 'react-icons2/mdi/account-settings';
-import Link from 'lsk-general/General/Link';
-import Avatar from 'lsk-general/General/Avatar';
+import Link from '@lskjs/general/Link';
+import Avatar from '@lskjs/general/Avatar';
 
 @inject(stores => ({
   myUser: stores.user,

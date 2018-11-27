@@ -1,6 +1,7 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 import { inject, observer } from 'mobx-react';
-import { autobind } from 'core-decorators';
+import autobind from 'core-decorators/lib/autobind';
 import omit from 'lodash/omit';
 import {
   Row,
@@ -18,8 +19,8 @@ import cx from 'classnames';
 import Loading from 'react-icons2/md/refresh';
 import Error from 'react-icons2/md/clear';
 import Check from 'react-icons2/md/check';
-import Component from 'lsk-general/General/Component';
-import Form from 'lsk-general/General/Form';
+import Component from '@lskjs/general/Component';
+import Form from '@lskjs/general/Form';
 
 import PasswordChange from '../components/PasswordChange';
 import AvatarChange from '../components/AvatarChange';

@@ -1,8 +1,9 @@
-import React, { PureComponent, PropTypes } from 'react';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import css from 'importcss';
 import cx from 'classnames';
 import { OverlayTrigger, Tooltip } from 'react-bootstrap';
-import Link from 'lsk-general/General/Link';
+import Link from '@lskjs/general/Link';
 
 import Default from 'react-icons2/mdi/instagram';
 import Plus from 'react-icons2/mdi/plus';

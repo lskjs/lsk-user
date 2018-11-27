@@ -1,4 +1,4 @@
-import _ from 'lodash';
+import merge from 'lodash/merge';
 
 export default (ctx) => {
   const { e404 } = ctx.errors;
@@ -13,16 +13,15 @@ export default (ctx) => {
 
     async list(req) {
       const { User } = ctx.models;
-      const online = req.data.filter && req.data.filter.online || null;
-      if (online != null) {
-        delete req.data.filter.online;
-      }
-
+      // const online = req.data.filter && req.data.filter.online || null;
+      // if (online != null) {
+      //   delete req.data.filter.online;
+      // }
       const users = await User.findByParams(req.data);
-      if (online != null) {
-        return users.filter(user => user.online == online);
-      }
-      return User.prepare(users, { req });
+      // if (online != null) {
+      //   return users.filter(user => user.online == online);
+      // }
+      return User.prepare(users, { req, action: 'list' });
     },
 
     async me(req) {
@@ -51,10 +50,11 @@ export default (ctx) => {
       if (!user) throw e404('User not found!');
       if (params.username) user.username = params.username;
       if (params.password) user.password = params.password;
-      _.merge(user.profile, params.profile);
+      merge(user.profile, params.profile);
       user.markModified('profile');
       return User.prepare(user, { req });
     },
+
     async edit(...args) {
       return resourse.update(...args);
     },

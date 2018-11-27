@@ -1,5 +1,6 @@
-import React, { PropTypes } from 'react';
-import { autobind } from 'core-decorators';
+import React from 'react';
+import PropTypes from 'prop-types';
+import autobind from 'core-decorators/lib/autobind';
 import { inject } from 'mobx-react';
 import cx from 'classnames';
 import isEqual from 'lodash/isEqual';
@@ -18,7 +19,7 @@ import {
   CardFooter,
 } from 'react-bootstrap-card';
 
-import Component from 'lsk-general/General/Component';
+import Component from '@lskjs/general/Component';
 
 import Loading from 'react-icons2/md/refresh';
 import Error from 'react-icons2/md/clear';

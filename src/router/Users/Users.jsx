@@ -1,14 +1,15 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button } from 'react-bootstrap';
 import { Card, CardBlock } from 'react-bootstrap-card';
-import { autobind } from 'core-decorators';
+import autobind from 'core-decorators/lib/autobind';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import { observer } from 'mobx-react';
-import Link from 'lsk-general/General/Link';
+import Link from '@lskjs/general/Link';
 import moment from 'moment';
 import VisibilitySensor from 'react-visibility-sensor';
-import Loading from 'lsk-general/General/Loading';
-import Avatar from 'lsk-general/General/Avatar';
+import Loading from '@lskjs/general/Loading';
+import Avatar from '@lskjs/general/Avatar';
 
 @observer
 export default class Users extends Component {

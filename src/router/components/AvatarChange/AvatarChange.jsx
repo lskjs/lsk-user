@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react';
-import Component from 'lsk-general/General/Component';
-import Avatar from 'lsk-general/General/Avatar';
-import { autobind } from 'core-decorators';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Component from '@lskjs/general/Component';
+import Avatar from '@lskjs/general/Avatar';
+import autobind from 'core-decorators/lib/autobind';
 import Dropzone from 'react-dropzone';
 import { inject, observer } from 'mobx-react';
 import css from 'importcss';

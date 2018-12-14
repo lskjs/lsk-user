@@ -12,7 +12,7 @@ import {
   CardBlock,
   CardHeader,
 } from 'react-bootstrap-card';
-import css from 'importcss';
+// import css from 'importcss';
 import Edit from 'react-icons2/mdi/account-settings';
 import Link from '@lskjs/general/Link';
 import Avatar from '@lskjs/general/Avatar';
@@ -23,7 +23,7 @@ import Avatar from '@lskjs/general/Avatar';
   uapp: stores.uapp,
   // Messages: stores.uapp.modules.chat.components.Messages,
 }))
-@css(require('./User.css'))
+// @css(require('./User.css'))
 export default class User extends Component {
   static propTypes = {
     user: PropTypes.object.isRequired,

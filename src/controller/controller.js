@@ -51,7 +51,7 @@ export default (ctx) => {
       if (params.name) user.name = params.name;
       if (params.avatar) user.avatar = params.avatar;
       if (params.username) user.username = params.username;
-      if (params.password) user.password = params.password;
+      if (params.password) user.setPassword(params.password);
       merge(user.profile, params.profile);
       user.markModified('profile');
       merge(user.info, params.info);

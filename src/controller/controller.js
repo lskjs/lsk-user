@@ -48,6 +48,8 @@ export default (ctx) => {
 
       const user = await User.findById(userId);
       if (!user) throw e404('User not found!');
+      if (params.name) user.name = params.name;
+      if (params.avatar) user.avatar = params.avatar;
       if (params.username) user.username = params.username;
       if (params.password) user.password = params.password;
       merge(user.profile, params.profile);

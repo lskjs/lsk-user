@@ -52,6 +52,8 @@ export default (ctx) => {
       if (params.password) user.password = params.password;
       merge(user.profile, params.profile);
       user.markModified('profile');
+      merge(user.info, params.info);
+      user.markModified('info');
       return User.prepare(user, { req });
     },
 

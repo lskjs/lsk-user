@@ -54,6 +54,7 @@ export default (ctx) => {
       user.markModified('profile');
       merge(user.info, params.info);
       user.markModified('info');
+      await user.save();
       return User.prepare(user, { req });
     },
 
